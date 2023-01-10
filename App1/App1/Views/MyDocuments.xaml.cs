@@ -32,7 +32,7 @@ namespace App1.Views
         {
             try
             {               
-                Title = "PDF Utility";
+                Title = "Delon PDF Master";
                 //await Task.Delay(500);
                 loader.IsEnabled = true;
                 loader.IsVisible = true;
@@ -132,7 +132,7 @@ namespace App1.Views
 
             try
             {
-                Title = "PDF Utility";
+                Title = "Delon PDF Master";
                 await Task.Delay(500);
                 loader.IsEnabled = true;
                 loader.IsVisible = true;
