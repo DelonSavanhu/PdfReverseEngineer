@@ -26,7 +26,7 @@ using App1.libs;
 [assembly: MetaData("com.google.android.gms.ads.ca-app-pub-9511268744828643~6313645530", Value = "ca-app-pub-9511268744828643~6313645530")]
 namespace App1.Droid
 {
-    [Activity(Label = "PDF Utility", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Delon PDF Util", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
