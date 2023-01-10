@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:picker="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:App1.Services"
+             x:Class="App1.Views.PdfToDocX">
+    <ContentPage.Content xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+                <Label HorizontalOptions="Center" Text="Select file to convert." FontSize="Medium"></Label>
+                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="400" />
+                        </Grid.ColumnDefinitions>
+                        <button:SfButton                                    
+                                     HeightRequest="45"
+                                     WidthRequest="120"
+                                     VerticalOptions="Center"
+                                     HorizontalOptions="Center"
+                                     CornerRadius="25"
+                                     HasShadow="True"
+                                     BorderWidth="1"
+                                     BorderColor="Gray"
+                                     BackgroundColor="DeepSkyBlue"
+                                     HorizontalTextAlignment="Center"
+                                     VerticalTextAlignment="Center"                                                                         
+                                     Clicked="Button_Clicked"
+                                     Grid.Row="0"
+                                     Grid.Column="0"
+                                     Text="Pick File"/>
+
+                        <Picker Title="Select a format" Grid.Column="0" Grid.Row="1" ItemsSource="{Binding FormatList}" x:Name="Extension" />
+                    </Grid>
+                </ContentView>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <ContentView VerticalOptions="FillAndExpand">
+                        <listview:SfListView x:Name="MyListView"    
+                             ItemsSource="{Binding .}"
+                            
+                             ItemSize="100">
+                            <syncfusion:SfListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Spacing="0">
+
+                                            <Grid RowSpacing="0" ColumnSpacing="0" HeightRequest="72">
+
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <!-- Account Icon -->
+                                                <Image Grid.RowSpan="2" 
+                                               Margin="15,0,10,0"
+                                               WidthRequest="38"
+                                               HeightRequest="38"
+                                               VerticalOptions="CenterAndExpand"
+                                               Source="{Binding img}"/>
+
+                                                <!-- Document Name -->
+                                                <Label Grid.Column="1"
+                                               Grid.ColumnSpan="3"
+                                               Margin="0,13,0,0"
+                                               Text="{Binding name}"
+                                               TextColor="{DynamicResource Gray-900}"
+                                               FontSize="16"
+                                               FontAttributes="Bold"
+                                               FontFamily="{DynamicResource Montserrat-Medium}"
+                                               HeightRequest="24" />
+
+                                                <!-- Time -->
+                                                <Label Grid.Row="1"
+                                               Grid.Column="1"
+                                               Margin="0,0,0,14"
+                                               Text="{Binding date}"
+                                               TextColor="{DynamicResource Gray-700}"
+                                               FontSize="14"
+                                               FontFamily="{DynamicResource Montserrat-Medium}"
+                                               HeightRequest="21" />
+
+                                                <!-- Document Size -->
+                                                <Label Grid.Row="1"
+                                               Grid.Column="2"
+                                               Margin="24,0,0,14"
+                                               Text="{Binding size}"
+                                               TextColor="{DynamicResource Gray-700}"
+                                               FontSize="14"
+                                               FontFamily="{DynamicResource Montserrat-Medium}"
+                                               HeightRequest="21" />
+
+                                                <BoxView Grid.Row="2" Grid.ColumnSpan="4" Style="{DynamicResource SeparatorStyle}" />
+
+                                            </Grid>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+
+                            </syncfusion:SfListView.ItemTemplate>
+                        </listview:SfListView>
+
+
+                    </ContentView>
+                </StackLayout>
+                <ActivityIndicator IsRunning="False" x:Name="loader" />
+                <local:AdMobView x:Name="adMobView"
+                         WidthRequest="320" HeightRequest="50"
+                         VerticalOptions="EndAndExpand"/>
+                <ContentView Padding="20,40,0,40" VerticalOptions="FillAndExpand">
+                    <button:SfButton      
+                                     x:Name="SendToServer"
+                                      HeightRequest="45"
+                                     WidthRequest="120"
+                                     VerticalOptions="Center"
+                                     HorizontalOptions="Center"
+                                     CornerRadius="25"
+                                     HasShadow="True"
+                                     BorderWidth="1"
+                                     BorderColor="Gray"
+                                     BackgroundColor="DeepSkyBlue"
+                                     HorizontalTextAlignment="Center"
+                                     VerticalTextAlignment="Center"                                     
+                                     Clicked="Merge_Clicked"
+                                     Text="Convert PDF file"/>
+                </ContentView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

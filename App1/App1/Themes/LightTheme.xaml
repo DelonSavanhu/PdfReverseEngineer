@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    x:Class="App1.Themes.LightTheme"   
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+        <OnPlatform x:TypeArguments="x:String" 
+                x:Key="FontAwesomeBrands">
+      <On Platform="Android" 
+          Value="FontAwesome5Brands-Regular-400.otf#Regular" />
+      <On Platform="iOS" 
+          Value="FontAwesome5Brands-Regular" />
+      <On Platform="UWP" 
+          Value="/Assets/FontAwesome5Brands-Regular-400.otf#Font Awesome 5 Brands" />
+    </OnPlatform> 
+    
+    <OnPlatform x:TypeArguments="x:String" 
+                x:Key="FontAwesomeSolid"> 
+      <On Platform="Android" 
+          Value="FontAwesome5Free-Solid-900.otf#Regular" /> 
+      <On Platform="iOS" 
+          Value="FontAwesome5Free-Solid" /> 
+      <On Platform="UWP" 
+          Value="/Assets/FontAwesome5Solid.otf#Font Awesome 5 Free" /> 
+    </OnPlatform> 
+    
+    <OnPlatform x:TypeArguments="x:String" 
+                x:Key="FontAwesomeRegular">
+      <On Platform="Android" 
+          Value="FontAwesome5Free-Regular-400.otf#Regular" /> 
+      <On Platform="iOS" 
+          Value="FontAwesome5Free-Regular" /> 
+      <On Platform="UWP" 
+          Value="/Assets/FontAwesome5Free-Regular-400.otf#Font Awesome 5 Free" /> 
+    </OnPlatform>
+
+
+    <Color x:Key="PrimaryColor">#f54e5e</Color>
+    <Color x:Key="PrimaryDarkColor">#d0424f</Color>
+    <Color x:Key="PrimaryDarkenColor">#ab3641</Color>
+    <Color x:Key="PrimaryLighterColor">#edcacd</Color>
+    <Color x:Key="PrimaryGradient">#e83f94</Color>
+    <Color x:Key="PrimaryLight">#ffe8f4</Color>
+    <Color x:Key="SecondaryGradient">#7644ad</Color>
+    <Color x:Key="Secondary">#d54381</Color>
+    <Color x:Key="Green">#7ed321</Color>
+    <Color x:Key="Red">#ff4a4a</Color>
+    <Color x:Key="Orange">#ff844a</Color>
+    <Color x:Key="Blue">#4acaff</Color>
+    <Color x:Key="HyperLink">#567cd7</Color>
+     <Color x:Key="text">#000000</Color>
+      <Color x:Key="BackGround">#ffffff</Color>
+    <Color x:Key="Gray-100">#f6f7f8</Color>
+    <Color x:Key="Gray-200">#ebecef</Color>
+    <Color x:Key="Gray-300">#ced2d9</Color>
+    <Color x:Key="Gray-400">#b2b8c2</Color>
+    <Color x:Key="Gray-500">#959eac</Color>
+    <Color x:Key="Gray-600">#788396</Color>
+    <Color x:Key="Gray-700">#606a7b</Color>
+    <Color x:Key="Gray-800">#4a515e</Color>
+    <Color x:Key="Gray-900">#333942</Color>
+    <Color x:Key="Gray-Black">#000000</Color>
+    <Color x:Key="Gray-White">#ffffff</Color>
+    <x:String x:Key="MenuBanner">pdfbanner.png</x:String>
+    <x:String x:Key="MenuArrows">right_arrow.png</x:String>
+
+    <x:String x:Key="Info">&#9432;</x:String>
+    <x:String x:Key="Rating">&#xe70c;</x:String>
+    <x:String x:Key="Back">&#xe709;</x:String>
+    <x:String x:Key="ArrowRight">&#xe728;</x:String>
+    <x:String x:Key="Add">&#xe730;</x:String>
+    <x:String x:Key="Search">&#xe705;</x:String>
+    <x:String x:Key="Close">&#xe11b;</x:String>
+    <x:String x:Key="PhotosIcon">&#xe731;</x:String>
+    <x:String x:Key="AlbumsIcon">&#xe726;</x:String>
+    <x:String x:Key="SettingsIcon">&#xe72b;</x:String>
+    <x:String x:Key="Next">&#xe71a;</x:String>
+    <x:String x:Key="EditIcon">&#xe727;</x:String>
+    <x:String x:Key="More">&#xe719;</x:String>
+    <x:String x:Key="Music">&#xe744;</x:String>
+    <x:String x:Key="WhatsApp">&#xe748;</x:String>
+    <x:String x:Key="Photos">&#xe731;</x:String>
+    <x:String x:Key="FaceBook">&#xe70f;</x:String>
+    <x:String x:Key="Settings">&#xe72b;</x:String>
+    <x:String x:Key="Messages">&#xe73b;</x:String>
+    <x:String x:Key="Phone">&#xe71c;</x:String>
+    <x:String x:Key="Calendar">&#xe742;</x:String>
+    <x:String x:Key="Account">&#xe70e;</x:String>
+    <x:String x:Key="MoreIcon">&#xe715;</x:String>
+    <x:String x:Key="Category">&#xe733;</x:String>
+    <x:String x:Key="FileExplorer">&#xe74a;</x:String>
+
+
+    <OnPlatform x:Key="FontIcons" x:TypeArguments="x:String">
+        <OnPlatform.Platforms>
+            <On Platform="Android" Value="UIFontIcons.ttf#UIFontIcons" />
+            <On Platform="iOS" Value="UIFontIcons" />
+            <On Platform="UWP" Value="UIFontIcons.ttf#UIFontIcons" />
+        </OnPlatform.Platforms>
+    </OnPlatform>
+
+    <OnPlatform x:Key="Montserrat-SemiBold" x:TypeArguments="x:String">
+        <OnPlatform.Platforms>
+            <On Platform="Android" Value="Montserrat-SemiBold.ttf#Montserrat-SemiBold" />
+            <On Platform="iOS" Value="Montserrat-SemiBold" />
+            <On Platform="UWP" Value="Montserrat-SemiBold.ttf#Montserrat-SemiBold" />
+       </OnPlatform.Platforms>
+    </OnPlatform>
+
+    <OnPlatform x:Key="Montserrat-Regular" x:TypeArguments="x:String">
+        <OnPlatform.Platforms>
+            <On Platform="Android" Value="Montserrat-Regular.ttf#Montserrat-Regular" />
+            <On Platform="iOS" Value="Montserrat-Regular" />
+            <On Platform="UWP" Value="Assets/Montserrat-Regular.ttf#Montserrat-Regular" />
+        </OnPlatform.Platforms>
+    </OnPlatform>
+
+    <OnPlatform x:Key="Montserrat-Medium" x:TypeArguments="x:String">
+        <OnPlatform.Platforms>
+            <On Platform="Android" Value="Montserrat-Medium.ttf#Montserrat-Medium" />
+            <On Platform="iOS" Value="Montserrat-Medium" />
+            <On Platform="UWP" Value="Assets/Montserrat-Medium.ttf#Montserrat-Medium" />
+        </OnPlatform.Platforms>
+    </OnPlatform>
+
+    <OnPlatform x:Key="Montserrat-Bold" x:TypeArguments="x:String">
+        <OnPlatform.Platforms>
+            <On Platform="Android" Value="Montserrat-Bold.ttf#Montserrat-Bold" />
+            <On Platform="iOS" Value="Montserrat-Bold" />
+            <On Platform="UWP" Value="Montserrat-Bold.ttf#Montserrat-Bold" />
+        </OnPlatform.Platforms>
+    </OnPlatform>
+
+</ResourceDictionary>

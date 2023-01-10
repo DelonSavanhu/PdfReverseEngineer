@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:App1.Views" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:controls="clr-namespace:App1.Controls" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             x:Class="App1.Views.MyDocuments">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content
+        BackgroundColor="Transparent">
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout
+                x:Name="TitleView" 
+                Padding="0,8"
+                Grid.Row="0"
+                IsVisible="false"
+                HeightRequest="64"
+                BackgroundColor="{DynamicResource Gray-White}"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                Spacing="0">
+
+                <StackLayout
+                    x:Name="AppTitle"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="True"
+                    Orientation="Horizontal"
+                    Spacing="0"
+                    VerticalOptions="FillAndExpand">
+
+                    <!--  Back button command  -->
+                    <button:SfButton
+                            x:Name="backButton"                           
+                            Clicked="inforSearch_Clicked"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="Black"
+                            BackgroundColor="Transparent"
+                            Text="&#x2139;" />
+
+                </StackLayout>
+
+                <StackLayout
+                    x:Name="Search"
+                    HorizontalOptions="EndAndExpand"
+                    IsVisible="False"
+                    Orientation="Horizontal"
+                    Spacing="0">
+
+                    <!--  Back to title layout  -->
+                    <button:SfButton
+                        x:Name="BackToTitle"
+                        Clicked="BackToTitle_Clicked"
+                        TextColor="Black"
+                        BackgroundColor="Transparent"
+                        Style="{DynamicResource NavigationBarButtonStyle}"
+                        Text="&#x2716;" />
+
+                    <!--  Rounded Search Entry  -->
+                    <border:SfBorder
+                        CornerRadius="25"
+                        HorizontalOptions="FillAndExpand"
+                        BorderColor="Transparent"
+                        Style="{DynamicResource SfBorderStyle}">
+                        <controls:BorderlessEntry
+                            x:Name="SearchEntry"
+                            Completed="SearchEntry_Completed"
+                            HorizontalOptions="FillAndExpand"
+                            Placeholder="Search here"
+                            BackgroundColor="Transparent"
+                            VerticalOptions="Center"
+                            PlaceholderColor="Transparent"
+                            Style="{DynamicResource SearchEntryStyle}"/>
+                    </border:SfBorder>
+                </StackLayout>
+
+                <!--  Search Button IsVisible="True" -->
+                <button:SfButton
+                    x:Name="SearchButton"                    
+                    Clicked="SearchButton_Clicked"
+                    Text="&#x1F50D;"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    FontFamily="{StaticResource FontAwesomeBrands}"
+                   />
+
+            </StackLayout>
+             <!--Text=""--> 
+
+<!--            <BoxView  Grid.Row="1" BackgroundColor="{DynamicResource Gray-200}" HeightRequest="1" />-->
+
+            <StackLayout Padding="0,140,0,40" Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center" x:Name="SL">
+                <Image                         
+                                     VerticalOptions="Center"
+                                     HorizontalOptions="Center"                                     
+                                     x:Name="img">
+                </Image>
+                <Label HorizontalOptions="Center" Text="There are no files yet." FontSize="Medium"></Label>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" Spacing="0">
+
+                <busyindicator:SfBusyIndicator 
+                x:Name="loader"
+                AnimationType="Cupertino" 
+                Title="Loading Files..."
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand"
+                IsBusy="{Binding IsLoading, Mode=TwoWay}" 
+                IsVisible="false"
+                IsEnabled="false"
+                TextColor="Black"/>
+                                
+                <listview:SfListView x:Name="MyListView"    
+                             ItemsSource="{Binding .}"
+                            
+                             ItemSize="100">
+                    <listview:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Spacing="0">
+
+                                    <Grid RowSpacing="0" ColumnSpacing="0" HeightRequest="72">
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Account Icon -->
+                                        <Image Grid.RowSpan="2" 
+                                                Margin="17,0"
+                                               WidthRequest="18"
+                                               HeightRequest="18"
+                                               VerticalOptions="CenterAndExpand"
+                                               Source="{Binding img}"/>
+
+                                        <Label Grid.Column="1"
+                                               Grid.ColumnSpan="3"
+                                               Margin="0,13,0,0"
+                                               Text="{Binding name}"
+                                               TextColor="{DynamicResource Gray-900}"
+                                               FontSize="16"
+                                               FontFamily="{DynamicResource Montserrat-Medium}"
+                                               HeightRequest="24" />
+                                        <!-- Time -->
+                                        <Label Grid.Row="1"
+                                               Grid.Column="1"
+                                               Margin="0,0,0,14"
+                                               Text="{Binding date}"
+                                               TextColor="{DynamicResource Gray-700}"
+                                               FontSize="14"
+                                               FontFamily="{DynamicResource Montserrat-Medium}"
+                                               HeightRequest="21" />
+
+                                        <!-- Document Size -->
+                                        <Label Grid.Row="1"
+                                               Grid.Column="2"
+                                               Margin="24,0,0,14"
+                                               Text="{Binding size}"
+                                               TextColor="{DynamicResource Gray-700}"
+                                               FontSize="14"
+                                               FontFamily="{DynamicResource Montserrat-Medium}"
+                                               HeightRequest="21" />
+                                        
+                                        <!-- Seperator -->
+                                        <BoxView Grid.Row="2" Grid.ColumnSpan="4" Style="{DynamicResource SeparatorStyle}" />
+
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+
+                    </listview:SfListView.ItemTemplate>
+                </listview:SfListView>
+
+            </StackLayout>
+        </Grid>
+
+    </ContentPage.Content>
+
+</ContentPage>
