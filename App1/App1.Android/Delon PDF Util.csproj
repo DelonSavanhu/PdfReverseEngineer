@@ -76,7 +76,7 @@
     <AndroidLinkMode>None</AndroidLinkMode>
     <MandroidI18n />
     <AndroidEnableProfiledAot>true</AndroidEnableProfiledAot>
-    <AndroidKeyStore>True</AndroidKeyStore>
+    <AndroidKeyStore></AndroidKeyStore>
     <AndroidSigningKeyStore>/Users/delonsavanhu/Documents/development/pdfutility.keystore</AndroidSigningKeyStore>
 <AndroidSigningStorePass>gabby&amp;kuda</AndroidSigningStorePass>
 <AndroidSigningStorePass>gabby&amp;kuda</AndroidSigningStorePass>
