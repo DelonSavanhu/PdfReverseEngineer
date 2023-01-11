@@ -39,7 +39,6 @@
     <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
-    <AndroidUseAapt2>true</AndroidUseAapt2>
     <AndroidKeyStore></AndroidKeyStore>
     <AndroidSigningKeyStore>/Users/delonsavanhu/Documents/development/pdfutility.keystore</AndroidSigningKeyStore>
     <MandroidExtraArgs></MandroidExtraArgs>
@@ -76,7 +75,7 @@
     <AndroidLinkMode>None</AndroidLinkMode>
     <MandroidI18n />
     <AndroidEnableProfiledAot>true</AndroidEnableProfiledAot>
-    <AndroidKeyStore></AndroidKeyStore>
+    <AndroidKeyStore>True</AndroidKeyStore>
     <AndroidSigningKeyStore>/Users/delonsavanhu/Documents/development/pdfutility.keystore</AndroidSigningKeyStore>
 <AndroidSigningStorePass>gabby&amp;kuda</AndroidSigningStorePass>
 <AndroidSigningStorePass>gabby&amp;kuda</AndroidSigningStorePass>

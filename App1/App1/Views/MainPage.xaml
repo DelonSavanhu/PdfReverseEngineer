@@ -14,8 +14,7 @@
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_feed.png"/>
                 </OnPlatform>
-            </NavigationPage.Icon>
-            
+            </NavigationPage.Icon>            
             <x:Arguments>
                <!-- <views:ItemsPage />-->
                 <views:MyDocuments />
