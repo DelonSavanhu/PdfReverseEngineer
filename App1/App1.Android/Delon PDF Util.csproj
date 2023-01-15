@@ -39,7 +39,7 @@
     <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
-    <AndroidKeyStore></AndroidKeyStore>
+    <AndroidKeyStore>True</AndroidKeyStore>
     <AndroidSigningKeyStore>/Users/delonsavanhu/Documents/development/pdfutility.keystore</AndroidSigningKeyStore>
     <MandroidExtraArgs></MandroidExtraArgs>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
@@ -54,7 +54,7 @@
     <MandroidExtraArgs></MandroidExtraArgs>
     <AssemblyName>App1.Android</AssemblyName>
 <AndroidLinkMode>None</AndroidLinkMode>
-<AndroidPackageFormat>aab</AndroidPackageFormat>
+<AndroidPackageFormat>apk</AndroidPackageFormat>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
