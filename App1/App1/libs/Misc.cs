@@ -52,6 +52,11 @@ namespace App1.libs
             }
             return path;
         }
+        public int GetAndroidVersion()
+        {
+            IPathService pathFinder = DependencyService.Get<IPathService>();
+            return pathFinder.checkVersion();
+        }
         public string SaveByteArrayToFileWithFileStream(byte[] data, string name)
         {
             try

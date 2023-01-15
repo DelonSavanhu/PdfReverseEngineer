@@ -10,5 +10,6 @@ namespace App1.Services
         string InternalFolder { get; }
         string PublicExternalFolder { get; }
         string PrivateExternalFolder { get; }
+        int checkVersion();
     }
 }

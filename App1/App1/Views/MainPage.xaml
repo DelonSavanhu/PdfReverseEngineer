@@ -15,8 +15,8 @@
                     <On Platform="iOS" Value="tab_feed.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>            
-            <x:Arguments>
-               <!-- <views:ItemsPage />-->
+             <x:Arguments>
+              <!--  <views:ItemsPage />-->
                 <views:MyDocuments />
             </x:Arguments>
         </NavigationPage>

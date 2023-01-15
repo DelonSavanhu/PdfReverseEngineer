@@ -24,16 +24,17 @@ namespace App1.Views
         Misc misc = new Misc();
         public MyDocuments()
         {
-            InitializeComponent();
+            InitializeComponent();            
             this.Appearing += LoadData;
             this.Init();
         }
         private async void Init()
         {
             try
-            {               
-                Title = "Delon PDF Master";
-                //await Task.Delay(500);
+            {
+                await this.CheckAppPermissions();
+                Title = "Delon PDF Master";                
+                await Task.Delay(500);
                 loader.IsEnabled = true;
                 loader.IsVisible = true;
                     
@@ -132,8 +133,13 @@ namespace App1.Views
 
             try
             {
+                int version = misc.GetAndroidVersion();
+                if (version > 28 || version == 0)
+                {
+                    await DisplayAlert("Sorry", "This app does not support the android version you have.", "Exit");
+                }
                 Title = "Delon PDF Master";
-                await Task.Delay(500);
+                //await Task.Delay(500);
                 loader.IsEnabled = true;
                 loader.IsVisible = true;
 
@@ -410,6 +416,27 @@ namespace App1.Views
             this.AppTitle.IsVisible = true;
             this.SearchButton.IsVisible = true;
             MyListView.ItemsSource = myDocs;
+        }
+        async Task CheckAppPermissions()
+        {
+            try
+            {
+                var status = await Permissions.CheckStatusAsync<Permissions.StorageRead>();
+                if (status != PermissionStatus.Granted)
+                {
+                    status = await Permissions.RequestAsync<Permissions.StorageRead>();
+                }
+                var status2 = await Permissions.CheckStatusAsync<Permissions.StorageWrite>();
+                if (status2 != PermissionStatus.Granted)
+                {
+                    status2 = await Permissions.RequestAsync<Permissions.StorageWrite>();
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }

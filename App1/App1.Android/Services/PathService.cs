@@ -45,6 +45,22 @@ namespace App1.Droid.Services
                 return Application.Context.GetExternalFilesDir(null).AbsolutePath;
             }
         }
-        
+
+        public int checkVersion()
+        {
+            int version = 0;
+
+            var sdk = Build.VERSION.Sdk;
+            if (Int32.TryParse(sdk, out version))
+            {
+                return version;
+            }
+            else
+            {
+                return version;
+            }
+
+        }
+
     }
 }

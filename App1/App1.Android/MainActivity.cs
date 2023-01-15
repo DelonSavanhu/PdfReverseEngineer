@@ -21,6 +21,8 @@ using Microsoft.AppCenter.Crashes;
 using App1.Services.Interfaces;
 using System.IO;
 using App1.libs;
+using Xamarin.Essentials;
+using Xamarin.Forms.PlatformConfiguration;
 //using Android.Gms.Ads;
 
 [assembly: MetaData("com.google.android.gms.ads.ca-app-pub-9511268744828643~6313645530", Value = "ca-app-pub-9511268744828643~6313645530")]
@@ -31,16 +33,16 @@ namespace App1.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            //try
-            //{
+            try
+            {
                 TabLayoutResource = Resource.Layout.Tabbar;
                 ToolbarResource = Resource.Layout.Toolbar;
-
+                Xamarin.Essentials.Platform.Init(this, savedInstanceState);
                 base.OnCreate(savedInstanceState);
-                ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.WriteExternalStorage, Manifest.Permission.ReadExternalStorage }, 114);
+                this.checkVersion();
+                //ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.WriteExternalStorage, Manifest.Permission.ReadExternalStorage }, 114);
                 //ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.Camera }, 5);
 
-                this.CheckAppPermissions();
                 //MobileAds.Initialize(ApplicationContext, "ca-app-pub-9511268744828643/1991257149");
                 global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
                 CrossCurrentActivity.Current.Init(this, savedInstanceState);
@@ -51,32 +53,93 @@ namespace App1.Droid
                 ToastNotification.Init(this);
                 Syncfusion.XForms.Android.PopupLayout.SfPopupLayoutRenderer.Init();
                 LoadApplication(new App());
-            /*}
+                //this.CheckAppPermissions();
+
+            }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-            }*/
+            }
         }
-         void CheckAppPermissions()
+        async void checkVersion()
         {
-        
-            /*if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.Camera) == (int)Permission.Granted)
+          /*  int version = 0;
+
+            var sdk=Build.VERSION.Sdk;
+            if(Int32.TryParse(sdk, out version))
             {
+                if (version > 28)
+                {
+                    
+                    await App.Current.MainPage.DisplayAlert("Sorry", "This app does not support the android version you have.", "Exit");
+                }
             }
             else
             {
-                ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.Camera }, 1);
-                // Camera permission is not granted. If necessary display rationale & request.
+                await App.Current.MainPage.DisplayAlert("Sorry", "This app does not support the android version you have.", "Exit");
             }*/
-            if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.WriteExternalStorage) == (int)Permission.Granted && ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) == (int)Permission.Granted)
+
+        }
+         async void CheckAppPermissions()
+        {
+            try
             {
-                // We have permission.
+                var status = await Permissions.CheckStatusAsync<Permissions.StorageRead>();
+                if (status != PermissionStatus.Granted)
+                {
+                    status = await Permissions.RequestAsync<Permissions.StorageRead>();
+                }
+                var status2 = await Permissions.CheckStatusAsync<Permissions.StorageWrite>();
+                if (status2 != PermissionStatus.Granted)
+                {
+                    status2 = await Permissions.RequestAsync<Permissions.StorageWrite>();
+                }
+
+                /*if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.Camera) == (int)Permission.Granted)
+                {
+                }
+                else
+                {
+                    ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.Camera }, 1);
+                    // Camera permission is not granted. If necessary display rationale & request.
+                }
+                if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.WriteExternalStorage) == (int)Permission.Granted && ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) == (int)Permission.Granted)
+                {
+                    // We have permission.
+                }
+                else
+                {
+                    ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.WriteExternalStorage, Manifest.Permission.ReadExternalStorage }, 114);
+
+                }
+                if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) == (int)Permission.Granted && ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) == (int)Permission.Granted)
+                {
+                    // We have permission.
+                }
+                else
+                {
+                    ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.ReadExternalStorage, Manifest.Permission.ReadExternalStorage }, 114);
+
+                }*/
             }
-            else
+            catch(Exception e)
             {
-                ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.WriteExternalStorage, Manifest.Permission.ReadExternalStorage }, 114);
-                
+                throw e;
             }
         }
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        {
+            try
+            {
+                Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+                base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            }
+            catch(Exception e)
+            {
+
+            }
+        }
+
     }
 }

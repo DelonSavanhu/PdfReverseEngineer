@@ -97,50 +97,57 @@ namespace App1.Views
             try
             {
                 
-                  FileData fileData = new FileData();
+                 FileData fileData = new FileData();
+                
                   fileData = await CrossFilePicker.Current.PickFile();
+                
+                if (fileData != null)
+                {
+                    string name = fileData.FileName;
+                    //string filePath = fileData.FilePath;
+                    string filePath = misc.SaveByteArrayToFileWithFileStream(fileData.DataArray, name);
+                    //check if filetype is allowed
+                    if (!misc.AllowedTypes(Path.GetExtension(filePath), new string[] { ".png", ".jpeg", ".jpg", ".tiff", ".gif" }))
+                    {
+                        misc.ShowNotification("Invalid file", "Please select a valid file.", false, "error.png");
+                        throw new CustomException("Please select a valid image file.");
+                    }
 
-                  string name = fileData.FileName;
-                  //string filePath = fileData.FilePath;
-                  string filePath = misc.SaveByteArrayToFileWithFileStream(fileData.DataArray, name);
-                  //check if filetype is allowed
-                  if(!misc.AllowedTypes(Path.GetExtension(filePath),new string[] { ".png", ".jpeg",".jpg",".tiff",".gif" }))
-                  {
-                      misc.ShowNotification("Invalid file", "Please select a valid file.", false, "error.png");
-                      throw new CustomException("Please select a valid image file.");
-                  }
+                    Items.Add(name);
+                    request.Add(filePath);
 
-                  Items.Add(name);
-                  request.Add(filePath);
-
-                  FileInfo oFileInfo = new FileInfo(filePath);
-
-
-                  request2.Add(new Document
-                  {
-                       date=oFileInfo.CreationTime.ToString("dd MMM HH:mm"),
-                       name=oFileInfo.Name,
-                       path=filePath,
-                       size= Math.Round(misc.ConvertBytesToMegabytes(oFileInfo.Length), 2).ToString() + " MB",
-                       type=oFileInfo.Extension,
-                       img=misc.GetIcon(filePath)
-                  });
+                    FileInfo oFileInfo = new FileInfo(filePath);
 
 
-                  if (request2 != null && request2.Count > 0)
-                  {
-                      SendToServer.IsVisible = true;
-                  }
-                  else
-                  {
-                      SendToServer.IsVisible = false;
-                  }
-
-                 
-                //PickOptions options = new PickOptions { PickerTitle = "Hello" };
-                //var result = await this.PickAndShow(options);
+                    request2.Add(new Document
+                    {
+                        date = oFileInfo.CreationTime.ToString("dd MMM HH:mm"),
+                        name = oFileInfo.Name,
+                        path = filePath,
+                        size = Math.Round(misc.ConvertBytesToMegabytes(oFileInfo.Length), 2).ToString() + " MB",
+                        type = oFileInfo.Extension,
+                        img = misc.GetIcon(filePath)
+                    });
 
 
+                    if (request2 != null && request2.Count > 0)
+                    {
+                        SendToServer.IsVisible = true;
+                    }
+                    else
+                    {
+                        SendToServer.IsVisible = false;
+                    }
+
+                    
+                    /*PickOptions options = new PickOptions { PickerTitle = "Hello" };
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await PickAndShow(PickOptions.Images);
+                    });
+                    //var result = await this.PickAndShow(options);
+                    */
+                }
             }
             catch (CustomException ex)
             {
@@ -154,8 +161,9 @@ namespace App1.Views
         }
         async Task<FileResult> PickAndShow(PickOptions options)
         {
-            try
+            /*try
             {
+                
                 var result = await FilePicker.PickAsync(options);
                 if (result != null)
                 {
@@ -174,7 +182,7 @@ namespace App1.Views
             {
                 // The user canceled or something went wrong
             }
-
+            */
             return null;
         }
         private async void Merge_Clicked(object sender, EventArgs e)
