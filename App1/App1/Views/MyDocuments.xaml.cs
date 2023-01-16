@@ -26,13 +26,14 @@ namespace App1.Views
         {
             InitializeComponent();            
             this.Appearing += LoadData;
-            this.Init();
+            this.CheckAppPermissions();
+
+           
         }
         private async void Init()
         {
             try
             {
-                await this.CheckAppPermissions();
                 Title = "Delon PDF Master";                
                 await Task.Delay(500);
                 loader.IsEnabled = true;
@@ -41,14 +42,6 @@ namespace App1.Views
                 await Task.Run(() =>
                 {
                 // do work here that you don't want on the UI thread 
-                /*if (Device.RuntimePlatform == Device.iOS)
-                {
-                    path = Environment.GetFolderPath(Environment.SpecialFolder.Personal); 
-                }
-                else if (Device.RuntimePlatform == Device.Android)
-                {
-                    path = misc.GetPath();
-                }*/
                     string path = misc.GetPath();
                     Documents docs = new Documents();
                     myDocs = docs.GetDocuments(path);                    
@@ -430,6 +423,10 @@ namespace App1.Views
                 if (status2 != PermissionStatus.Granted)
                 {
                     status2 = await Permissions.RequestAsync<Permissions.StorageWrite>();
+                }
+                if (status == PermissionStatus.Granted && status2 == PermissionStatus.Granted)
+                { //then load documents
+                    this.Init();
                 }
 
             }

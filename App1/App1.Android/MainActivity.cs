@@ -39,7 +39,7 @@ namespace App1.Droid
                 ToolbarResource = Resource.Layout.Toolbar;
                 Xamarin.Essentials.Platform.Init(this, savedInstanceState);
                 base.OnCreate(savedInstanceState);
-                this.checkVersion();
+                //this.checkVersion();
                 //ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.WriteExternalStorage, Manifest.Permission.ReadExternalStorage }, 114);
                 //ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.Camera }, 5);
 

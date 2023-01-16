@@ -20,12 +20,12 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <AndroidKeyStore>true</AndroidKeyStore>
-    <AndroidSigningKeyStore>C:\Users\DelonS\Documents\pdfutility.keystore</AndroidSigningKeyStore>
-    <AndroidSigningStorePass>gabby&amp;kuda</AndroidSigningStorePass>
-    <AndroidSigningKeyAlias>afrodeb</AndroidSigningKeyAlias>
-    <AndroidSigningKeyPass>gabby&amp;kuda</AndroidSigningKeyPass>
+    <AndroidSigningKeyStore>/Users/delonsavanhu/Dev/pdf-utility-mobi-master/android.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>gabby#Kuda1</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>delon</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>gabby#Kuda1</AndroidSigningKeyPass>
     <AndroidLinkMode>None</AndroidLinkMode>
-    <AssemblyOriginatorKeyFile>..\..\..\..\Documents\development\pdfutility.keystore</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>/Users/delonsavanhu/Dev/pdf-utility-mobi-master/android.keystore</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,8 +39,7 @@
     <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
-    <AndroidKeyStore>True</AndroidKeyStore>
-    <AndroidSigningKeyStore>/Users/delonsavanhu/Documents/development/pdfutility.keystore</AndroidSigningKeyStore>
+    <AndroidSigningKeyStore>/Users/delonsavanhu/Dev/pdf-utility-mobi-master/android.keystore</AndroidSigningKeyStore>
     <MandroidExtraArgs></MandroidExtraArgs>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidDexTool>d8</AndroidDexTool>
@@ -55,6 +54,10 @@
     <AssemblyName>App1.Android</AssemblyName>
 <AndroidLinkMode>None</AndroidLinkMode>
 <AndroidPackageFormat>apk</AndroidPackageFormat>
+<AndroidKeyStore>True</AndroidKeyStore>
+<AndroidSigningStorePass>gabby#Kuda1</AndroidSigningStorePass>
+<AndroidSigningKeyAlias>delon</AndroidSigningKeyAlias>
+<AndroidSigningKeyPass>gabby#Kuda1</AndroidSigningKeyPass>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -69,17 +72,19 @@
     <AndroidCreatePackagePerAbi>false</AndroidCreatePackagePerAbi>
     <AotAssemblies>true</AotAssemblies>
     <AndroidSupportedAbis>armeabi-v7a;arm64-v8a;x86;x86_64</AndroidSupportedAbis>
-    <AndroidPackageFormat>aab</AndroidPackageFormat>
+    <AndroidPackageFormat>apk</AndroidPackageFormat>
     <AndroidUseAapt2>true</AndroidUseAapt2>
-    <AndroidLinkTool>r8</AndroidLinkTool>
     <AndroidLinkMode>None</AndroidLinkMode>
     <MandroidI18n />
     <AndroidEnableProfiledAot>true</AndroidEnableProfiledAot>
-    <AndroidKeyStore></AndroidKeyStore>
-    <AndroidSigningKeyStore>/Users/delonsavanhu/Documents/development/pdfutility.keystore</AndroidSigningKeyStore>
-<AndroidSigningStorePass>gabby&amp;kuda</AndroidSigningStorePass>
-<AndroidSigningStorePass>gabby&amp;kuda</AndroidSigningStorePass>
-<AndroidSigningKeyAlias>afrodeb</AndroidSigningKeyAlias>
+    <AndroidSigningKeyStore>/Users/delonsavanhu/Dev/pdf-utility-mobi-master/android.keystore</AndroidSigningKeyStore>
+<AndroidSigningStorePass>gabby#Kuda1</AndroidSigningStorePass>
+<AndroidSigningStorePass>gabby#Kuda1</AndroidSigningStorePass>
+<AndroidSigningKeyAlias>delon</AndroidSigningKeyAlias>
+<AndroidEnableMultiDex>true</AndroidEnableMultiDex>
+<AndroidSigningKeyPass>gabby#Kuda1</AndroidSigningKeyPass>
+<AndroidKeyStore>True</AndroidKeyStore>
+<AndroidDexTool>d8</AndroidDexTool>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -205,6 +210,12 @@
     </PackageReference>
     <PackageReference Include="Xamarin.AndroidX.Palette">
       <Version>1.0.0.6</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.CustomView">
+      <Version>1.1.0.14</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.RecyclerView">
+      <Version>1.2.1.8</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
