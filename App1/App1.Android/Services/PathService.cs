@@ -12,6 +12,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using App1.Services;
+using Java.Security.Cert;
 
 [assembly: Dependency("App1.Droid.Services.PathService", LoadHint.Always)]
 namespace App1.Droid.Services
@@ -32,9 +33,10 @@ namespace App1.Droid.Services
 
         public string PublicExternalFolder
         {
+            //Android.OS.Environment.ExternalStorageDirectory.AbsolutePath 
             get
             {
-                return Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
+                return Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;//Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
             }
         }
 

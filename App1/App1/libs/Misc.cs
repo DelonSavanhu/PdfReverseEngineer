@@ -43,14 +43,23 @@ namespace App1.libs
 
         public string GetPath()
         {
-            string path = "";
-            IPathService pathFinder = DependencyService.Get<IPathService>();
-            path = Path.Combine(pathFinder.PublicExternalFolder, "PdfUtility");
-            if (!Directory.Exists(path))
+            try
             {
-                Directory.CreateDirectory(path);
+
+                string path = "";
+                IPathService pathFinder = DependencyService.Get<IPathService>();
+                //path = Path.Combine(pathFinder.PublicExternalFolder, "PdfUtility");
+                path = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "PdfUtility");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                return path;
             }
-            return path;
+            catch (Exception e)
+            {
+                return "";
+            }
         }
         public int GetAndroidVersion()
         {

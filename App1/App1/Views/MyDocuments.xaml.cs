@@ -75,7 +75,8 @@ namespace App1.Views
             }
             catch (Exception ex)
             {
-
+                loader.IsEnabled = true;
+                loader.IsVisible = true;
             }
 
 
@@ -127,10 +128,10 @@ namespace App1.Views
             try
             {
                 int version = misc.GetAndroidVersion();
-                if (version > 28 || version == 0)
+                /*if (version > 28 || version == 0)
                 {
                     await DisplayAlert("Sorry", "This app does not support the android version you have.", "Exit");
-                }
+                }*/
                 Title = "Delon PDF Master";
                 //await Task.Delay(500);
                 loader.IsEnabled = true;

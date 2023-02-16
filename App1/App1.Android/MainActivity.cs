@@ -40,6 +40,7 @@ namespace App1.Droid
                 Xamarin.Essentials.Platform.Init(this, savedInstanceState);
                 base.OnCreate(savedInstanceState);
                 //this.checkVersion();
+
                 //ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.WriteExternalStorage, Manifest.Permission.ReadExternalStorage }, 114);
                 //ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.Camera }, 5);
 
@@ -50,10 +51,11 @@ namespace App1.Droid
                 DependencyService.Register<IPDFOpen, PDFSaveAndOpen>();
                 DependencyService.Register<IToastNotificator, ToastNotification>();
                 //
+                
                 ToastNotification.Init(this);
                 Syncfusion.XForms.Android.PopupLayout.SfPopupLayoutRenderer.Init();
                 LoadApplication(new App());
-                //this.CheckAppPermissions();
+                this.CheckAppPermissions();
 
             }
             catch (Exception ex)
@@ -80,45 +82,68 @@ namespace App1.Droid
             }*/
 
         }
-         async void CheckAppPermissions()
+        async void CheckAppPermissions()
         {
             try
             {
-                var status = await Permissions.CheckStatusAsync<Permissions.StorageRead>();
+                if (Permissions.ShouldShowRationale<Permissions.StorageRead>())
+                {
+                    // Prompt the user with additional information as to why the permission is needed
+                }
+                var status =await Permissions.CheckStatusAsync<Permissions.StorageRead>();
                 if (status != PermissionStatus.Granted)
                 {
                     status = await Permissions.RequestAsync<Permissions.StorageRead>();
                 }
-                var status2 = await Permissions.CheckStatusAsync<Permissions.StorageWrite>();
+                
+                var status2 =await Permissions.CheckStatusAsync<Permissions.StorageWrite>();
                 if (status2 != PermissionStatus.Granted)
                 {
-                    status2 = await Permissions.RequestAsync<Permissions.StorageWrite>();
+                    status2 =await Permissions.RequestAsync<Permissions.StorageWrite>();
+                }
+                var status3 = await Permissions.CheckStatusAsync<Permissions.Media>();
+                if (status3 != PermissionStatus.Granted)
+                {
+                    status3 = await Permissions.RequestAsync<Permissions.Media>();
+                }
+                var status4 = await Permissions.CheckStatusAsync<Permissions.Photos>();
+                if (status4 != PermissionStatus.Granted)
+                {
+                    status4 = await Permissions.RequestAsync<Permissions.Photos>();
                 }
 
-                /*if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.Camera) == (int)Permission.Granted)
-                {
-                }
-                else
-                {
-                    ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.Camera }, 1);
-                    // Camera permission is not granted. If necessary display rationale & request.
-                }
-                if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.WriteExternalStorage) == (int)Permission.Granted && ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) == (int)Permission.Granted)
+                /*                if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.WriteExternalStorage) == (int)Permission.Granted)
+                                {
+                                }
+                                else
+                                {
+                                    ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.WriteExternalStorage,Manifest.Permission.ReadExternalStorage,Manifest.Permission.ReadMediaImages }, 114);
+                                    // Camera permission is not granted. If necessary display rationale & request.
+                                }
+                                if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.Camera) == (int)Permission.Granted)
+                                {
+                                }
+                                else
+                                {
+                                    ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.Camera }, 1);
+                                    // Camera permission is not granted. If necessary display rationale & request.
+                                }
+                                if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.WriteExternalStorage) == (int)Permission.Granted && ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) == (int)Permission.Granted)
+                                {
+                                    // We have permission.
+                                }
+                                else
+                                {
+                                    ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.WriteExternalStorage, Manifest.Permission.ReadExternalStorage,Manifest.Permission.ReadMediaImages }, 114);
+
+                                }*/
+                /*if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) == (int)Permission.Granted && ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) == (int)Permission.Granted)
                 {
                     // We have permission.
                 }
                 else
                 {
-                    ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.WriteExternalStorage, Manifest.Permission.ReadExternalStorage }, 114);
-
-                }
-                if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) == (int)Permission.Granted && ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) == (int)Permission.Granted)
-                {
-                    // We have permission.
-                }
-                else
-                {
-                    ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.ReadExternalStorage, Manifest.Permission.ReadExternalStorage }, 114);
+                    ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.ReadExternalStorage, Manifest.Permission.ReadExternalStorage }, 115);
 
                 }*/
             }

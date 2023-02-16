@@ -88,6 +88,9 @@ namespace App1.Views
         {
             try
             {
+
+
+
                 FileData fileData = new FileData();
                 fileData = await CrossFilePicker.Current.PickFile();
                 byte[] data = fileData.DataArray;
